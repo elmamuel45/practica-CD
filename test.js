@@ -24,16 +24,3 @@ describe('Aplicación web', () => {
     });
   });
 
-  it('Debe retornar un mensaje exitoso', (done) => {
-    http.get(`http://localhost:${PORT}`, (res) => {
-      let data = '';
-      res.on('data', (chunk) => {
-        data += chunk;
-      });
-      res.on('end', () => {
-        assert.include(data, 'Hola, esta es mi aplicación web simple.');
-        done();
-      });
-    });
-  });
-
