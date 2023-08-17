@@ -6,7 +6,7 @@ const app = require('./app'); // Ajusta la ruta si es necesario
 
 describe('Aplicación web', () => {
   let appServer;
-  const PORT = 3001; // Puerto diferente para las pruebas
+  const PORT = 3000; // Puerto diferente para las pruebas
 
   // Antes de las pruebas, inicia el servidor
   before((done) => {
