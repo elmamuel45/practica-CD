@@ -2,7 +2,7 @@
 const assert = require('chai').assert;
 const http = require('http');
 
-const server = require('../app'); // Ajusta la ruta si es necesario
+const server = require('./app'); // Ajusta la ruta si es necesario
 
 describe('Aplicación web', () => {
   let appServer;
