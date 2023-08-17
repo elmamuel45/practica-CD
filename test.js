@@ -3,7 +3,7 @@ const assert = require('chai').assert;
 const http = require('http');
 
 // Ajusta la ruta para subir un nivel y acceder a app.js
-const server = require('../app');
+const server = require('./app');
 
 describe('Aplicación web', () => {
   it('Debe retornar un mensaje exitoso', (done) => {
