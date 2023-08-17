@@ -2,16 +2,16 @@
 const assert = require('chai').assert;
 const http = require('http');
 
-// Ajusta la ruta y el nombre del archivo si es necesario
-const app = require('./app');
+const app = require('./app'); // Ajusta la ruta si es necesario
 
 describe('Aplicación web', () => {
   let appServer;
+  const PORT = 3001; // Puerto diferente para las pruebas
 
   // Antes de las pruebas, inicia el servidor
   before((done) => {
-    appServer = http.createServer(app).listen(3000, () => {
-      console.log('Servidor de prueba iniciado en el puerto 3000');
+    appServer = app.listen(PORT, () => {
+      console.log(`Servidor de prueba iniciado en el puerto ${PORT}`);
       done();
     });
   });
@@ -25,7 +25,7 @@ describe('Aplicación web', () => {
   });
 
   it('Debe retornar un mensaje exitoso', (done) => {
-    http.get('http://localhost:3000', (res) => {
+    http.get(`http://localhost:${PORT}`, (res) => {
       let data = '';
       res.on('data', (chunk) => {
         data += chunk;
