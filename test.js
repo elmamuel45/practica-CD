@@ -38,8 +38,7 @@ describe('Aplicación web', () => {
   });
 
   // Ejemplo de prueba asincrónica utilizando promesas
-  it('Debe resolver una promesa', async () => {
-    await new Promise((resolve) => setTimeout(resolve, 1002));
-    // Hacer aserciones aquí si es necesario
-  }).timeout(3000); // Ajusta el timeout a 3000ms (3 segundos)
-});
+it('Debe resolver una promesa', async () => {
+  await new Promise((resolve) => setTimeout(resolve, 1002));
+  // Hacer aserciones aquí si es necesario
+}).timeout(3000); // Ajusta el timeout a 3000ms (3 segundos)
