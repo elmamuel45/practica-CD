@@ -23,18 +23,25 @@ jobs:
       run: npm test
 
   deploy:
-    needs: build
+    needs: build # El trabajo "deploy" necesita que el trabajo "build" haya terminado
+    if: ${{ needs.build.result == 'success' }} # Solo se ejecutará si el trabajo "build" fue exitoso
     runs-on: ubuntu-latest
 
     steps:
     - name: Checkout código fuente
       uses: actions/checkout@v2
 
-    # Configura Node.js y otras dependencias necesarias para el despliegue
+    # Puedes configurar Node.js y otras dependencias necesarias para el despliegue aquí
 
     - name: Despliegue en entorno de prueba
       run: |
         # Aquí coloca los comandos o scripts para implementar la aplicación en tu entorno de prueba.
         # Esto podría incluir, por ejemplo, copiar los archivos de la aplicación a un servidor de prueba.
+        
+        # Ejemplo: Iniciar un servidor Node.js para tu aplicación en el puerto 3000
+        npm install # Instalar dependencias nuevamente para el entorno de prueba
+        node app.js & # Iniciar el servidor en segundo plano
+        
+        # Puedes añadir más comandos de despliegue aquí si es necesario
 
-    # Más pasos de configuración y limpieza, si es necesario
+    # Puedes agregar más pasos de configuración y limpieza aquí si es necesario
