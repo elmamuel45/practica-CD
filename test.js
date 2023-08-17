@@ -23,4 +23,24 @@ describe('Aplicación web', () => {
       done(); // Asegurarse de que Mocha espere hasta que se detenga el servidor
     });
   });
+  
+  it('Debe retornar un mensaje exitoso', (done) => {
+    http.get(`http://localhost:${PORT}`, (res) => {
+      let data = '';
+      res.on('data', (chunk) => {
+        data += chunk;
+      });
+      res.on('end', () => {
+        assert.include(data, 'Hola, esta es mi aplicación web simple.');
+        done();
+      });
+    });
+  });
+
+  // Ejemplo de prueba asincrónica utilizando promesas
+  it('Debe resolver una promesa', async () => {
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+    // Hacer aserciones aquí si es necesario
+  });
+});
 
