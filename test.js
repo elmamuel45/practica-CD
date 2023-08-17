@@ -36,4 +36,10 @@ describe('Aplicación web', () => {
       });
     });
   });
+
+  // Ejemplo de prueba asincrónica utilizando promesas
+  it('Debe resolver una promesa', async () => {
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+    // Hacer aserciones aquí si es necesario
+  });
 });
