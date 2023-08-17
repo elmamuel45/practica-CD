@@ -5,12 +5,12 @@ const http = require('http');
 const app = require('./app'); // Ajusta la ruta si es necesario
 
 describe('Aplicación web', () => {
-  let appServer;
-  const PORT = 3000; // Puerto diferente para las pruebas
+  let server;
+  const PORT = 3001; // Puerto diferente para las pruebas
 
   // Antes de las pruebas, inicia el servidor
   before((done) => {
-    appServer = app.listen(PORT, () => {
+    server = http.createServer(app).listen(PORT, () => {
       console.log(`Servidor de prueba iniciado en el puerto ${PORT}`);
       done();
     });
@@ -18,7 +18,7 @@ describe('Aplicación web', () => {
 
   // Después de las pruebas, detén el servidor
   after((done) => {
-    appServer.close(() => {
+    server.close(() => {
       console.log('Servidor de prueba detenido');
       done(); // Asegurarse de que Mocha espere hasta que se detenga el servidor
     });
