@@ -2,7 +2,7 @@
 const assert = require('chai').assert;
 const http = require('http');
 
-const app = require('./app'); // Ajusta la ruta si es necesario
+const app = require('../app'); // Ajusta la ruta si es necesario
 
 describe('Aplicación web', () => {
   let server;
@@ -23,7 +23,7 @@ describe('Aplicación web', () => {
       done(); // Asegurarse de que Mocha espere hasta que se detenga el servidor
     });
   });
-  
+
   it('Debe retornar un mensaje exitoso', (done) => {
     http.get(`http://localhost:${PORT}`, (res) => {
       let data = '';
@@ -39,8 +39,7 @@ describe('Aplicación web', () => {
 
   // Ejemplo de prueba asincrónica utilizando promesas
   it('Debe resolver una promesa', async () => {
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    await new Promise((resolve) => setTimeout(resolve, 1002));
     // Hacer aserciones aquí si es necesario
-  });
+  }).timeout(3000); // Ajusta el timeout a 3000ms (3 segundos)
 });
-
